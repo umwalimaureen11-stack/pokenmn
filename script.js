@@ -80,3 +80,49 @@ function displayPokemon(data) {
     "duration-500",
     "hover:scale-105"
   );
+ card.innerHTML = `
+    <div class="text-center">
+
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3">
+        ${name} ${id}
+      </h2>
+
+      <!-- ✅ Responsive Sprite Section -->
+      <div class="flex flex-wrap justify-center gap-4 mb-4">
+        <img src="${data.sprites.front_default}" 
+             alt="${name}"
+             class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28">
+             
+        <img src="${data.sprites.back_default}" 
+             alt="${name}"
+             class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28">
+             
+        <img src="${data.sprites.front_shiny}" 
+             alt="${name}"
+             class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28">
+      </div>
+
+      <p class="text-sm sm:text-base"><strong>Height:</strong> ${height} m</p>
+      <p class="text-sm sm:text-base"><strong>Weight:</strong> ${weight} kg</p>
+      <p class="text-sm sm:text-base"><strong>Base Experience:</strong> ${data.base_experience}</p>
+
+      <div class="mt-4">
+        <strong>Types:</strong>
+        <div class="flex flex-wrap justify-center gap-2 mt-2">
+          ${data.types
+            .map(
+              (type) => `
+              <span class="px-3 py-1 bg-indigo-600 text-white rounded-full text-xs sm:text-sm">
+                ${type.type.name}
+              </span>
+            `
+            )
+            .join("")}
+        </div>
+      </div>
+
+    </div>
+  `;
+
+  pokemonCard.appendChild(card);
+}
