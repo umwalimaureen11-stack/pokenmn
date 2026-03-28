@@ -54,3 +54,29 @@ async function fetchPokemon() {
     button.disabled = false;
   }
 }
+// 🎴 Display Pokémon Card
+function displayPokemon(data) {
+  const name =
+    data.name.charAt(0).toUpperCase() + data.name.slice(1);
+
+  const id = `#${data.id.toString().padStart(3, "0")}`;
+  const height = data.height / 10;
+  const weight = data.weight / 10;
+
+  const card = document.createElement("div");
+
+  card.classList.add(
+    "bg-gradient-to-br",
+    "from-indigo-100",
+    "to-purple-200",
+    "dark:from-gray-700",
+    "dark:to-gray-600",
+    "rounded-2xl",
+    "p-4",
+    "sm:p-6",
+    "shadow-xl",
+    "transform",
+    "transition",
+    "duration-500",
+    "hover:scale-105"
+  );
